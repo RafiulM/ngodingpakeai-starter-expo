@@ -1,0 +1,4 @@
+# Maestro workspace for the mobile app: every top-level flow runs; reusable
+# steps live in subflows/. See docs/mobile.md for running them.
+flows:
+  - "*"

@@ -1,0 +1,16 @@
+# Leaves the current screen: the system back button on Android, the edge
+# swipe on iOS (Maestro's back command is Android-only).
+appId: host.exp.Exponent
+---
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - back
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - swipe:
+          start: 1%, 50%
+          end: 80%, 50%

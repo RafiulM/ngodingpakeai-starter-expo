@@ -1,0 +1,48 @@
+# Sign up, create a note, edit it, delete it, sign out.
+appId: host.exp.Exponent
+---
+- runFlow: subflows/start.yaml
+- tapOn: "Create an account"
+- tapOn:
+    id: "name"
+- inputText: "Maestro Tester"
+- tapOn:
+    id: "email"
+- inputRandomEmail
+- tapOn:
+    id: "password"
+- inputText: "a-long-password"
+- hideKeyboard
+- tapOn: "Create account"
+- extendedWaitUntil:
+    visible: "Welcome, Maestro Tester."
+    timeout: 15000
+- tapOn: "Open the Notes example"
+- assertVisible: "No notes yet. Add the first one above."
+- tapOn:
+    id: "new-note-title"
+- inputText: "Buy oat milk"
+- hideKeyboard
+- tapOn: "Add note"
+- extendedWaitUntil:
+    visible: "Buy oat milk"
+    timeout: 10000
+- tapOn: "Edit Buy oat milk"
+- tapOn:
+    id: "edit-.*-title"
+- eraseText
+- inputText: "Buy almond milk"
+- hideKeyboard
+- tapOn: "Save changes"
+- extendedWaitUntil:
+    visible: "Buy almond milk"
+    timeout: 10000
+- tapOn: "Delete Buy almond milk"
+- extendedWaitUntil:
+    visible: "No notes yet. Add the first one above."
+    timeout: 10000
+- runFlow: subflows/back.yaml
+- tapOn: "Sign out"
+- extendedWaitUntil:
+    visible: "Welcome back"
+    timeout: 10000

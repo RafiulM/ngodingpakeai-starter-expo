@@ -1,0 +1,9 @@
+{
+  "id": "express-expo-postgres",
+  "name": "Express Expo Postgres",
+  "description": "An AI-friendly monorepo with an Express API, an Expo (React Native) mobile app, Drizzle and PostgreSQL.",
+  "baseVersion": "0.1.0",
+  "framework": "express+expo",
+  "database": "postgresql",
+  "scheme": "expressexpo"
+}

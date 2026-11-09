@@ -1,0 +1,19 @@
+# Opens the app fresh in Expo Go and signs out a leftover session, so every
+# flow starts on the sign-in screen. EXPO_URL is the Metro address Expo Go
+# loads, e.g. exp://127.0.0.1:8081; pnpm test:e2e passes it.
+appId: host.exp.Exponent
+---
+- stopApp
+- openLink: ${EXPO_URL}
+- extendedWaitUntil:
+    visible:
+      text: "Sign in|Sign out"
+    timeout: 60000
+- runFlow:
+    when:
+      visible: "Sign out"
+    commands:
+      - tapOn: "Sign out"
+- extendedWaitUntil:
+    visible: "Welcome back"
+    timeout: 15000

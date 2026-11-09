@@ -1,0 +1,25 @@
+name: Express + Expo monorepo checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm run setup
+      - run: pnpm check
+      - run: pnpm format:check
+      # Builds the API and bundles the app's JavaScript for iOS and Android.
+      # Maestro flows (pnpm test:e2e) need a simulator and run locally.
+      - run: pnpm build

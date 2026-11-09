@@ -1,0 +1,25 @@
+# An admin reads every account's notes and deletes one. pnpm test:e2e creates
+# the admin account (ADMIN_EMAIL, ADMIN_PASSWORD) and a note owned by another
+# account before the flows run.
+appId: host.exp.Exponent
+---
+- runFlow: subflows/start.yaml
+- tapOn:
+    id: "email"
+- inputText: ${ADMIN_EMAIL}
+- tapOn:
+    id: "password"
+- inputText: ${ADMIN_PASSWORD}
+- hideKeyboard
+- tapOn: "Sign in"
+- scrollUntilVisible:
+    element: "Open admin"
+- tapOn: "Open admin"
+- extendedWaitUntil:
+    visible: "Owned by someone else"
+    timeout: 10000
+- assertVisible: "Note Owner · .*"
+- tapOn: "Delete Owned by someone else"
+- extendedWaitUntil:
+    notVisible: "Owned by someone else"
+    timeout: 10000

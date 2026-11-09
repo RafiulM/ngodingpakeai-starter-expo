@@ -1,0 +1,9 @@
+node_modules
+dist
+.expo
+.turbo
+.data
+pnpm-lock.yaml
+apps/api/drizzle/meta
+*.tsbuildinfo
+.env*

@@ -1,0 +1,30 @@
+# STARTER PLACEHOLDER CHECK. Delete this flow together with the placeholder in
+# src/app/index.tsx once the app has its first real screen.
+appId: host.exp.Exponent
+---
+- runFlow: subflows/start.yaml
+- tapOn: "Create an account"
+- tapOn:
+    id: "name"
+- inputText: "Starter Check"
+- tapOn:
+    id: "email"
+- inputRandomEmail
+- tapOn:
+    id: "password"
+- inputText: "a-long-password"
+- hideKeyboard
+- tapOn: "Create account"
+- extendedWaitUntil:
+    visible:
+      id: "starter-placeholder"
+    timeout: 15000
+- assertVisible: "Your first feature starts here"
+# A new account has the default role: no admin entry point.
+- scrollUntilVisible:
+    element: "Signed in as .*"
+- assertNotVisible: "Open admin"
+- tapOn: "Sign out"
+- extendedWaitUntil:
+    visible: "Welcome back"
+    timeout: 10000

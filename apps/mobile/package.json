@@ -1,0 +1,74 @@
+{
+  "name": "@starter/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "dev": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android",
+    "build": "expo export --platform ios --platform android",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@better-auth/expo": "catalog:",
+    "@rn-primitives/label": "1.5.2",
+    "@rn-primitives/portal": "1.5.3",
+    "@rn-primitives/slot": "1.5.2",
+    "@starter/shared": "workspace:*",
+    "@tanstack/react-query": "5.105.0",
+    "better-auth": "catalog:",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "expo": "~58.0.20",
+    "expo-clipboard": "~58.0.4",
+    "expo-constants": "~58.0.13",
+    "expo-linking": "~58.0.14",
+    "expo-network": "~58.0.4",
+    "expo-router": "~58.0.27",
+    "expo-secure-store": "~58.0.2",
+    "expo-splash-screen": "~58.0.11",
+    "expo-status-bar": "~58.0.4",
+    "expo-system-ui": "~58.0.6",
+    "expo-web-browser": "~58.0.7",
+    "lucide-react-native": "1.62.0",
+    "nativewind": "4.2.7",
+    "react": "19.3.0",
+    "react-native": "0.88.0",
+    "react-native-css-interop": "0.2.7",
+    "react-native-reanimated": "4.7.1",
+    "react-native-safe-area-context": "~5.10.1",
+    "react-native-screens": "~4.30.0",
+    "react-native-svg": "15.16.0",
+    "react-native-worklets": "0.13.0",
+    "tailwind-merge": "2.6.1",
+    "tailwindcss-animate": "1.0.7"
+  },
+  "devDependencies": {
+    "@jest/globals": "30.5.2",
+    "@testing-library/react-native": "14.1.0",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "babel-preset-expo": "~58.0.21",
+    "jest": "30.5.2",
+    "jest-expo": "~58.0.12",
+    "tailwindcss": "3.4.19",
+    "test-renderer": "1.3.1",
+    "typescript": "catalog:"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "setupFiles": [
+      "<rootDir>/src/test/setup.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/src/test/**/*.test.{ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@rn-primitives|nativewind|react-native-css-interop|lucide-react-native))",
+      "/node_modules/react-native-reanimated/plugin/",
+      "/node_modules/@react-native/babel-preset/"
+    ]
+  }
+}

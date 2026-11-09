@@ -1,0 +1,15 @@
+# Wrong credentials stay on sign-in with a readable error.
+appId: host.exp.Exponent
+---
+- runFlow: subflows/start.yaml
+- tapOn:
+    id: "email"
+- inputText: "nobody@example.com"
+- tapOn:
+    id: "password"
+- inputText: "wrong-password"
+- hideKeyboard
+- tapOn: "Sign in"
+- extendedWaitUntil:
+    visible: "We couldn't sign you in. Check your email and password and try again."
+    timeout: 10000
